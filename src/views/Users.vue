@@ -4,12 +4,15 @@
     <h5 v-if="errorMessage">{{ errorMessage }}</h5>
 
     <div v-if="users.length > 0">
-        <ul>
-            <li v-for="{first_name, last_name, email, id} in users" :key="id">
-                <h4>{{ first_name }} {{ last_name }}</h4>
-                <h6>{{ email }}</h6>
-            </li>
-        </ul>
+        <section class="father-user">
+            <div v-for="{ avatar, first_name, last_name, email, id } in users" :key="id" class="card-user">
+                <img :src="avatar" :alt="first_name">
+                <div class="cad-content">
+                    <h4>{{ first_name }} {{ last_name }}</h4>
+                    <h6>{{ email }}</h6>
+                </div>
+            </div>
+        </section>
     </div>
 
     <button @click="prevPage">Atras</button>
@@ -39,11 +42,7 @@ h2 {
     width: 100%;
 }
 
-div {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
+
 
 ul {
     width: 250px;
@@ -55,5 +54,15 @@ li {
     border-radius: 20px;
     padding: 10px 0;
     margin-bottom: 5px;
+}
+
+.card-content {
+    display: block;
+}
+
+.father-user, .card-user {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
 }
 </style>
